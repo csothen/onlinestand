@@ -27,7 +27,7 @@ Web Application to manage an online stand based in a microservice architecture
 - Negotiable (Boolean if the price is negotiable)
 - Status (If the vehicles is available/sold/reserved)
 - Condition (If the vehicle's condition is new/renewed/used/broken)
-- Extras (This could be a series of extras for the user to select or just plain text for the user to insert)
+- Features (A series of features that the user can select)
 - Fuel Type (Electric/Diesel/Gasoline/Hybrid)
 - Gearbox (Automatic/Manual)
 - Cubic Capacity
@@ -46,7 +46,7 @@ Web Application to manage an online stand based in a microservice architecture
 - Short Description
 - Long Description
 
-### Vehicle Extra Model
+### Vehicle Feature Model
 
 - Identifier
 - Name

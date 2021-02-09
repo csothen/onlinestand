@@ -8,6 +8,7 @@ type Vehicle struct {
 	Brand                 string   `json:"brand"`
 	Model                 string   `json:"model"`
 	Kilometers            int      `json:"kilometers"`
+	Location              Location `json:"location"`
 	Price                 int      `json:"price"`
 	Status                string   `json:"status"`
 	Negotiable            bool     `json:"negotiable"`

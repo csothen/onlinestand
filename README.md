@@ -43,6 +43,7 @@ Web Application to manage an online stand based in a microservice architecture
 ### Vehicle Category Model
 
 - Identifier
+- Code
 - Short Description
 - Long Description
 

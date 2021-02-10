@@ -22,7 +22,17 @@ func (service *VehicleService) CreateVehicle(c models.Vehicle) error {
 	panic("Not implemented!")
 }
 
+// GetVehicle : Retrieves a single instance of the model Vehicle based on an id
+func (service *VehicleService) GetVehicle(id int) (*models.Vehicle, error) {
+	panic("Not implemented!")
+}
+
 // GetAllVehicle : Retrieves all instances of the model Vehicle
 func (service *VehicleService) GetAllVehicle() ([]*models.Vehicle, error) {
+	panic("Not implemented!")
+}
+
+// GetAllAvailableVehicle : Retreives all instances of the model Vehicle where the status is AVAILABLE
+func (service *VehicleService) GetAllAvailableVehicle() ([]*models.Vehicle, error) {
 	panic("Not implemented!")
 }

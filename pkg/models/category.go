@@ -11,10 +11,16 @@ type Category struct {
 // CategoryService : interface for Category model that defines the operations on it
 type CategoryService interface {
 	// Create a category
-	CreateCategory() error
+	CreateCategory(c Category) error
 
-	// Get a single category based on an id
-	GetCategory(id int) (*Category, error)
+	// Get all categories
+	GetAllCategory() ([]*Category, error)
+}
+
+// CategoryRepository : interface for Category model that defines operations available in the repository
+type CategoryRepository interface {
+	// Create a category
+	CreateCategory(c Category) error
 
 	// Get all categories
 	GetAllCategory() ([]*Category, error)

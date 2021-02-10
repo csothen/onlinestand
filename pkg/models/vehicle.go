@@ -30,7 +30,22 @@ type Vehicle struct {
 // VehicleService : interface for Vehicle model that defines the operations on it
 type VehicleService interface {
 	// Create a vehicle
-	CreateVehicle() error
+	CreateVehicle(v Vehicle) error
+
+	// Get a single vehicle based on an id
+	GetVehicle(id int) (*Vehicle, error)
+
+	// Get all vehicles
+	GetAllVehicle() ([]*Vehicle, error)
+
+	// Get all available vehicles
+	GetAllAvailableVehicle() ([]*Vehicle, error)
+}
+
+// VehicleRepository : interface for Vehicle model that defines operations available in the repository
+type VehicleRepository interface {
+	// Create a vehicle
+	CreateVehicle(v Vehicle) error
 
 	// Get a single vehicle based on an id
 	GetVehicle(id int) (*Vehicle, error)

@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -18,25 +19,25 @@ func NewVehicleController(l *log.Logger) *VehicleController {
 }
 
 func (vc *VehicleController) GetAllVehicles(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "GetAllVehicles")
 }
 
 func (vc *VehicleController) GetVehicleById(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "GetVehicleById")
 }
 
 func (vc *VehicleController) GetAllAvailableVehicles(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "GetAllAvailableVehicles")
 }
 
 func (vc *VehicleController) CreateVehicle(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "CreateVehicle")
 }
 
 func (vc *VehicleController) UpdateVehicleById(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "UpdateVehicleById")
 }
 
 func (vc *VehicleController) DeleteVehicleById(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "DeleteVehicleById")
 }

@@ -25,6 +25,5 @@ func connect() (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("Successfully connected!")
 	return db, nil
 }

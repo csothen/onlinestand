@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -18,21 +19,21 @@ func NewCategoryController(l *log.Logger) *CategoryController {
 }
 
 func (cc *CategoryController) GetAllCategories(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "GetAllCategories")
 }
 
 func (cc *CategoryController) GetCategoryById(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "GetCategoryById")
 }
 
 func (cc *CategoryController) CreateCategory(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "CreateCategory")
 }
 
 func (cc *CategoryController) UpdateCategoryById(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "UpdateCategoryById")
 }
 
 func (cc *CategoryController) DeleteCategoryById(rw http.ResponseWriter, r *http.Request) {
-
+	fmt.Fprint(rw, "DeleteCategoryById")
 }

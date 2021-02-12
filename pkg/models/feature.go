@@ -10,10 +10,10 @@ type Feature struct {
 // FeatureService : interface for Feature model that defines the operations on it
 type FeatureService interface {
 	// Create a feature
-	CreateFeature(f Feature) error
+	CreateFeature(f Feature) ServiceResponse
 
 	// Get all features
-	GetAllFeature() ([]*Feature, error)
+	GetAllFeature() ServiceResponse
 }
 
 // FeatureRepository : interface for Feature model that defines operations available in the repository

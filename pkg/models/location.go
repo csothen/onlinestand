@@ -10,10 +10,10 @@ type Location struct {
 // LocationService : interface for location defining operations on it
 type LocationService interface {
 	// Create a location
-	CreateLocation(l Location) error
+	CreateLocation(l Location) ServiceResponse
 
 	// Get all locations
-	GetAllLocation() ([]*Location, error)
+	GetAllLocation() ServiceResponse
 }
 
 // LocationRepository : interface for Location model that defines operations available in the repository

@@ -15,13 +15,13 @@ type User struct {
 // UserService : interface for User model that defines the operations on it
 type UserService interface {
 	// Create a user
-	CreateUser(u User) error
+	CreateUser(u User) ServiceResponse
 
 	// Get a single user based on an id
-	GetUser(id int) (*User, error)
+	GetUser(id int) ServiceResponse
 
 	// Get all users
-	GetAllUser() (*[]User, error)
+	GetAllUser() ServiceResponse
 }
 
 // UserRepository : interface for User model that defines operations available in the repository

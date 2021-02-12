@@ -18,11 +18,11 @@ func NewUserService() *UserService {
 }
 
 // CreateUser : Creates and persists a new instance of the model User
-func (service *UserService) CreateUser(c models.User) error {
+func (service *UserService) CreateUser(c models.User) models.ServiceResponse {
 	panic("Not implemented!")
 }
 
 // GetAllUser : Retrieves all instances of the model User
-func (service *UserService) GetAllUser() ([]*models.User, error) {
+func (service *UserService) GetAllUser() models.ServiceResponse {
 	panic("Not implemented!")
 }

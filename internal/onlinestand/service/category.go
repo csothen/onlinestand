@@ -1,6 +1,8 @@
 package service
 
 import (
+	"io"
+
 	"github.com/csothen/onlinestand/internal/onlinestand/repository/postgres"
 	"github.com/csothen/onlinestand/pkg/models"
 )
@@ -17,12 +19,27 @@ func NewCategoryService() *CategoryService {
 	return &CategoryService{repo}
 }
 
-// CreateCategory : Creates and persists a new instance of the model Category
-func (service *CategoryService) CreateCategory(c models.Category) error {
+// GetAll : Retrieves all instances of the model Category
+func (service *CategoryService) GetAll() (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }
 
-// GetAllCategory : Retrieves all instances of the model Category
-func (service *CategoryService) GetAllCategory() ([]*models.Category, error) {
+// GetByID : Retrieves an instance of the model Category based on an id
+func (service *CategoryService) GetByID(id string) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// Create : Creates and persists a new instance of the model Category
+func (service *CategoryService) Create(body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// UpdateByID : Updates and persists an instance of the model Category based on an id
+func (service *CategoryService) UpdateByID(id string, body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// DeleteByID : Deletes an instance of the model Category based on an id
+func (service *CategoryService) DeleteByID(id string) (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }

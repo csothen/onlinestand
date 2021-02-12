@@ -18,11 +18,11 @@ func NewLocationService() *LocationService {
 }
 
 // CreateLocation : Creates and persists a new instance of the model Location
-func (service *LocationService) CreateLocation(c models.Location) error {
+func (service *LocationService) CreateLocation(c models.Location) models.ServiceResponse {
 	panic("Not implemented!")
 }
 
 // GetAllLocation : Retrieves all instances of the model Location
-func (service *LocationService) GetAllLocation() ([]*models.Location, error) {
+func (service *LocationService) GetAllLocation() models.ServiceResponse {
 	panic("Not implemented!")
 }

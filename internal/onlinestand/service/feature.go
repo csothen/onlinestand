@@ -18,11 +18,11 @@ func NewFeatureService() *FeatureService {
 }
 
 // CreateFeature : Creates and persists a new instance of the model Feature
-func (service *FeatureService) CreateFeature(c models.Feature) error {
+func (service *FeatureService) CreateFeature(c models.Feature) models.ServiceResponse {
 	panic("Not implemented!")
 }
 
 // GetAllFeature : Retrieves all instances of the model Feature
-func (service *FeatureService) GetAllFeature() ([]*models.Feature, error) {
+func (service *FeatureService) GetAllFeature() models.ServiceResponse {
 	panic("Not implemented!")
 }

@@ -18,21 +18,21 @@ func NewVehicleService() *VehicleService {
 }
 
 // CreateVehicle : Creates and persists a new instance of the model Vehicle
-func (service *VehicleService) CreateVehicle(c models.Vehicle) error {
+func (service *VehicleService) CreateVehicle(c models.Vehicle) models.ServiceResponse {
 	panic("Not implemented!")
 }
 
 // GetVehicle : Retrieves a single instance of the model Vehicle based on an id
-func (service *VehicleService) GetVehicle(id int) (*models.Vehicle, error) {
+func (service *VehicleService) GetVehicle(id int) models.ServiceResponse {
 	panic("Not implemented!")
 }
 
 // GetAllVehicle : Retrieves all instances of the model Vehicle
-func (service *VehicleService) GetAllVehicle() ([]*models.Vehicle, error) {
+func (service *VehicleService) GetAllVehicle() models.ServiceResponse {
 	panic("Not implemented!")
 }
 
 // GetAllAvailableVehicle : Retreives all instances of the model Vehicle where the status is AVAILABLE
-func (service *VehicleService) GetAllAvailableVehicle() ([]*models.Vehicle, error) {
+func (service *VehicleService) GetAllAvailableVehicle() models.ServiceResponse {
 	panic("Not implemented!")
 }

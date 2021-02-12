@@ -62,7 +62,7 @@ func runServer(s *http.Server, l *log.Logger) error {
 		}
 	}()
 
-	ch := make(chan os.Signal)
+	ch := make(chan os.Signal, 1)
 	signal.Notify(ch, os.Interrupt)
 	signal.Notify(ch, os.Kill)
 
@@ -158,14 +158,14 @@ func mapCategoryUrls(gets, posts, puts, deletes *mux.Router) {
 
 	// User GET endpoints
 	gets.HandleFunc("/api/categories", cc.GetAllCategories)
-	gets.HandleFunc("/api/categories/{id:[0-9]+}", cc.GetCategoryById)
+	gets.HandleFunc("/api/categories/{id:[0-9]+}", cc.GetCategoryByID)
 
 	// User POST endpoints
 	posts.HandleFunc("/api/categories", cc.CreateCategory)
 
 	// User PUT endpoints
-	puts.HandleFunc("/api/categories/{id:[0-9]+}", cc.UpdateCategoryById)
+	puts.HandleFunc("/api/categories/{id:[0-9]+}", cc.UpdateCategoryByID)
 
 	// User DELETE endpoints
-	deletes.HandleFunc("/api/categories/{id:[0-9]+}", cc.DeleteCategoryById)
+	deletes.HandleFunc("/api/categories/{id:[0-9]+}", cc.DeleteCategoryByID)
 }

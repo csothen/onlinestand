@@ -120,17 +120,17 @@ func mapFeatureUrls(gets, posts, puts, deletes *mux.Router) {
 	fl := log.New(os.Stdout, "[ Feature API ] - ", log.LstdFlags)
 	fc := controller.NewFeatureController(fl)
 
-	// User GET endpoints
+	// Feature GET endpoints
 	gets.HandleFunc("/api/features", fc.GetAllFeatures)
 	gets.HandleFunc("/api/features/{id:[0-9]+}", fc.GetFeatureById)
 
-	// User POST endpoints
+	// Feature POST endpoints
 	posts.HandleFunc("/api/features", fc.CreateFeature)
 
-	// User PUT endpoints
+	// Feature PUT endpoints
 	puts.HandleFunc("/api/features/{id:[0-9]+}", fc.UpdateFeatureById)
 
-	// User DELETE endpoints
+	// Feature DELETE endpoints
 	deletes.HandleFunc("/api/features/{id:[0-9]+}", fc.DeleteFeatureById)
 }
 
@@ -138,17 +138,17 @@ func mapLocationUrls(gets, posts, puts, deletes *mux.Router) {
 	ll := log.New(os.Stdout, "[ Location API ] - ", log.LstdFlags)
 	lc := controller.NewLocationController(ll)
 
-	// User GET endpoints
+	// Location GET endpoints
 	gets.HandleFunc("/api/locations", lc.GetAllLocations)
 	gets.HandleFunc("/api/locations/{id:[0-9]+}", lc.GetLocationById)
 
-	// User POST endpoints
+	// Location POST endpoints
 	posts.HandleFunc("/api/locations", lc.CreateLocation)
 
-	// User PUT endpoints
+	// Location PUT endpoints
 	puts.HandleFunc("/api/locations/{id:[0-9]+}", lc.UpdateLocationById)
 
-	// User DELETE endpoints
+	// Location DELETE endpoints
 	deletes.HandleFunc("/api/locations/{id:[0-9]+}", lc.DeleteLocationById)
 }
 
@@ -156,16 +156,16 @@ func mapCategoryUrls(gets, posts, puts, deletes *mux.Router) {
 	cl := log.New(os.Stdout, "[ Category API ] - ", log.LstdFlags)
 	cc := controller.NewCategoryController(cl)
 
-	// User GET endpoints
+	// Category GET endpoints
 	gets.HandleFunc("/api/categories", cc.GetAllCategories)
 	gets.HandleFunc("/api/categories/{id:[0-9]+}", cc.GetCategoryById)
 
-	// User POST endpoints
+	// Category POST endpoints
 	posts.HandleFunc("/api/categories", cc.CreateCategory)
 
-	// User PUT endpoints
+	// Category PUT endpoints
 	puts.HandleFunc("/api/categories/{id:[0-9]+}", cc.UpdateCategoryById)
 
-	// User DELETE endpoints
+	// Category DELETE endpoints
 	deletes.HandleFunc("/api/categories/{id:[0-9]+}", cc.DeleteCategoryById)
 }

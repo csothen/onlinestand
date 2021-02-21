@@ -1,6 +1,8 @@
 package service
 
 import (
+	"io"
+
 	"github.com/csothen/onlinestand/internal/onlinestand/repository/postgres"
 	"github.com/csothen/onlinestand/pkg/models"
 )
@@ -17,12 +19,27 @@ func NewLocationService() *LocationService {
 	return &LocationService{repo}
 }
 
-// CreateLocation : Creates and persists a new instance of the model Location
-func (service *LocationService) CreateLocation(c models.Location) models.ServiceResponse {
+// GetAll : Retrieves all instances of the model Location
+func (service *LocationService) GetAll() (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }
 
-// GetAllLocation : Retrieves all instances of the model Location
-func (service *LocationService) GetAllLocation() models.ServiceResponse {
+// GetByID : Retrieves an instance of the model Location that matches a given ID
+func (service *LocationService) GetByID(id string) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// Create : Creates and persists a new instance of the model Location
+func (service *LocationService) Create(body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// UpdateByID : Updates and persists an instance of the model Location that matches a given ID
+func (service *LocationService) UpdateByID(id string, body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// DeleteByID : Deletes an instance of the model Location that matches a given ID
+func (service *LocationService) DeleteByID(id string) (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }

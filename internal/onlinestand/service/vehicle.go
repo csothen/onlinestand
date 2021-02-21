@@ -1,6 +1,8 @@
 package service
 
 import (
+	"io"
+
 	"github.com/csothen/onlinestand/internal/onlinestand/repository/postgres"
 	"github.com/csothen/onlinestand/pkg/models"
 )
@@ -17,22 +19,32 @@ func NewVehicleService() *VehicleService {
 	return &VehicleService{repo}
 }
 
-// CreateVehicle : Creates and persists a new instance of the model Vehicle
-func (service *VehicleService) CreateVehicle(c models.Vehicle) models.ServiceResponse {
+// GetByID : Retrieves a single instance of the model Vehicle based on an id
+func (service *VehicleService) GetByID(id string) (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }
 
-// GetVehicle : Retrieves a single instance of the model Vehicle based on an id
-func (service *VehicleService) GetVehicle(id int) models.ServiceResponse {
+// GetAll : Retrieves all instances of the model Vehicle
+func (service *VehicleService) GetAll() (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }
 
-// GetAllVehicle : Retrieves all instances of the model Vehicle
-func (service *VehicleService) GetAllVehicle() models.ServiceResponse {
+// GetAllAvailable : Retreives all instances of the model Vehicle where the status is AVAILABLE
+func (service *VehicleService) GetAllAvailable() (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }
 
-// GetAllAvailableVehicle : Retreives all instances of the model Vehicle where the status is AVAILABLE
-func (service *VehicleService) GetAllAvailableVehicle() models.ServiceResponse {
+// Create : Creates and persists a new instance of the model Vehicle
+func (service *VehicleService) Create(body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// UpdateByID : Updates and persists an instance of the model Vehicle that matches a given ID
+func (service *VehicleService) UpdateByID(id string, body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// DeleteByID : Deletes an instance of the model Vehicle that matches a given ID
+func (service *VehicleService) DeleteByID(id string) (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }

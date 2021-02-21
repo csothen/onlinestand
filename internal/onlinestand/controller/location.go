@@ -1,11 +1,12 @@
 package controller
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/csothen/onlinestand/internal/onlinestand/service"
+	"github.com/csothen/onlinestand/pkg/responsehandler"
+	"github.com/gorilla/mux"
 )
 
 type LocationController struct {
@@ -19,21 +20,45 @@ func NewLocationController(l *log.Logger) *LocationController {
 }
 
 func (lc *LocationController) GetAllLocations(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "GetAllLocations")
+	lc.l.Println("GET Locations")
+
+	res, err := lc.service.GetAll()
+	responsehandler.Respond(lc.l, rw, res, err)
 }
 
 func (lc *LocationController) GetLocationById(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "GetLocationById")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	lc.l.Println("GET Location By ID", id)
+
+	res, err := lc.service.GetByID(id)
+	responsehandler.Respond(lc.l, rw, res, err)
 }
 
 func (lc *LocationController) CreateLocation(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "CreateLocation")
+	lc.l.Println("POST New Location")
+
+	res, err := lc.service.Create(r.Body)
+	responsehandler.Respond(lc.l, rw, res, err)
 }
 
 func (lc *LocationController) UpdateLocationById(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "UpdateLocationById")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	lc.l.Println("PUT Location By ID", id)
+
+	res, err := lc.service.UpdateByID(id, r.Body)
+	responsehandler.Respond(lc.l, rw, res, err)
 }
 
 func (lc *LocationController) DeleteLocationById(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "DeleteLocationById")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	lc.l.Println("DELETE Location By ID", id)
+
+	res, err := lc.service.DeleteByID(id)
+	responsehandler.Respond(lc.l, rw, res, err)
 }

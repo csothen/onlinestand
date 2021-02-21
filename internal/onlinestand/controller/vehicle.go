@@ -1,11 +1,12 @@
 package controller
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/csothen/onlinestand/internal/onlinestand/service"
+	"github.com/csothen/onlinestand/pkg/responsehandler"
+	"github.com/gorilla/mux"
 )
 
 type VehicleController struct {
@@ -19,25 +20,52 @@ func NewVehicleController(l *log.Logger) *VehicleController {
 }
 
 func (vc *VehicleController) GetAllVehicles(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "GetAllVehicles")
+	vc.l.Println("GET Vehicles")
+
+	res, err := vc.service.GetAll()
+	responsehandler.Respond(vc.l, rw, res, err)
 }
 
 func (vc *VehicleController) GetVehicleById(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "GetVehicleById")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	vc.l.Println("GET Vehicle by ID", id)
+
+	res, err := vc.service.GetByID(id)
+	responsehandler.Respond(vc.l, rw, res, err)
 }
 
 func (vc *VehicleController) GetAllAvailableVehicles(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "GetAllAvailableVehicles")
+	vc.l.Println("GET Available Vehicles")
+
+	res, err := vc.service.GetAllAvailable()
+	responsehandler.Respond(vc.l, rw, res, err)
 }
 
 func (vc *VehicleController) CreateVehicle(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "CreateVehicle")
+	vc.l.Println("POST New Vehicle")
+
+	res, err := vc.service.Create(r.Body)
+	responsehandler.Respond(vc.l, rw, res, err)
 }
 
 func (vc *VehicleController) UpdateVehicleById(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "UpdateVehicleById")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	vc.l.Println("PUT Vehicle by ID")
+
+	res, err := vc.service.UpdateByID(id, r.Body)
+	responsehandler.Respond(vc.l, rw, res, err)
 }
 
 func (vc *VehicleController) DeleteVehicleById(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(rw, "DeleteVehicleById")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	vc.l.Println("DELETE Vehicle by ID")
+
+	res, err := vc.service.DeleteByID(id)
+	responsehandler.Respond(vc.l, rw, res, err)
 }

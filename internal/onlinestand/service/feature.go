@@ -1,6 +1,8 @@
 package service
 
 import (
+	"io"
+
 	"github.com/csothen/onlinestand/internal/onlinestand/repository/postgres"
 	"github.com/csothen/onlinestand/pkg/models"
 )
@@ -17,12 +19,27 @@ func NewFeatureService() *FeatureService {
 	return &FeatureService{repo}
 }
 
-// CreateFeature : Creates and persists a new instance of the model Feature
-func (service *FeatureService) CreateFeature(c models.Feature) models.ServiceResponse {
+// GetAll : Retrieves all instances of the model Feature
+func (service *FeatureService) GetAll() (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }
 
-// GetAllFeature : Retrieves all instances of the model Feature
-func (service *FeatureService) GetAllFeature() models.ServiceResponse {
+// GetByID : Retrieves an instance of the model Feature that matches a given an ID
+func (service *FeatureService) GetByID(id string) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// Create : Creates and persists a new instance of the model Feature
+func (service *FeatureService) Create(body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// UpdateByID : Updates and persists an instance of the model Feature that matches a given ID
+func (service *FeatureService) UpdateByID(id string, body io.ReadCloser) (models.ServiceResponse, error) {
+	panic("Not implemented!")
+}
+
+// DeleteByID : Deletes an instance of the model Feature that matches a given ID
+func (service *FeatureService) DeleteByID(id string) (models.ServiceResponse, error) {
 	panic("Not implemented!")
 }

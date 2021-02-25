@@ -1,10 +1,10 @@
 package responsehandler
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 
+	"github.com/csothen/onlinestand/pkg/encode"
 	"github.com/csothen/onlinestand/pkg/models"
 )
 
@@ -16,5 +16,9 @@ func Respond(logger *log.Logger, rw http.ResponseWriter, res models.ServiceRespo
 	}
 
 	rw.WriteHeader(res.Status)
-	json.NewEncoder(rw).Encode(res.Value)
+
+	if err := encode.ToJSON(res.Value, rw); err != nil {
+		logger.Println(err)
+		http.Error(rw, "Unable to respond", http.StatusInternalServerError)
+	}
 }

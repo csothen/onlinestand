@@ -70,13 +70,13 @@ func (service *UserService) Create(body io.ReadCloser) (models.ServiceResponse, 
 		return models.ServiceResponse{Err: "Unable to parse request body", Status: 400}, err
 	}
 
-	user, err := service.repo.CreateUser(*user)
+	id, err := service.repo.CreateUser(*user)
 
 	if err != nil {
 		return models.ServiceResponse{Err: fmt.Sprintf("Failed to create the new user with username %s", user.Username), Status: 500}, err
 	}
 
-	return models.ServiceResponse{Value: user, Status: 201}, nil
+	return models.ServiceResponse{Value: id, Status: 201}, nil
 }
 
 // UpdateByID : Updates an instance of User that matches a given id
@@ -102,7 +102,7 @@ func (service *UserService) UpdateByID(id string, body io.ReadCloser) (models.Se
 	updatedUser.FirstName = user.FirstName
 	updatedUser.LastName = user.LastName
 
-	updatedUser, err = service.repo.Save(updatedUser)
+	err = service.repo.Save(updatedUser)
 
 	if err != nil {
 		return models.ServiceResponse{Err: fmt.Sprintf("Failed to update user with ID %s", id), Status: 500}, err
@@ -134,7 +134,7 @@ func (service *UserService) UpdateByUsername(username string, body io.ReadCloser
 	updatedUser.FirstName = user.FirstName
 	updatedUser.LastName = user.LastName
 
-	updatedUser, err = service.repo.Save(updatedUser)
+	err = service.repo.Save(updatedUser)
 
 	if err != nil {
 		return models.ServiceResponse{Err: fmt.Sprintf("Failed to update user with username %s", username), Status: 500}, err

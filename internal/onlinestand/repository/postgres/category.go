@@ -22,7 +22,7 @@ func NewCategoryRepository() *CategoryRepository {
 }
 
 // CreateCategory : Persists a new instance of the model Category in the database
-func (repo *CategoryRepository) CreateCategory(c models.Category) error {
+func (repo *CategoryRepository) CreateCategory(category models.Category) (int64, error) {
 	panic("Not implemented!")
 }
 

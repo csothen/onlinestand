@@ -20,7 +20,7 @@ type CategoryService interface {
 // CategoryRepository : interface for Category model that defines operations available in the repository
 type CategoryRepository interface {
 	// Create a category
-	CreateCategory(c Category) error
+	CreateCategory(category Category) (int64, error)
 
 	// Get all categories
 	GetAllCategory() ([]*Category, error)

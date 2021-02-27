@@ -27,10 +27,10 @@ type UserService interface {
 // UserRepository : interface for User model that defines operations available in the repository
 type UserRepository interface {
 	// Create a user
-	CreateUser(u User) (*User, error)
+	CreateUser(user User) (*User, error)
 
 	// Get all users
-	GetAllUser() ([]*User, error)
+	GetAllUsers() ([]*User, error)
 
 	// Get user by ID
 	GetUserByID(id string) (*User, error)

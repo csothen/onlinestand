@@ -23,7 +23,7 @@ func NewUserService() *UserService {
 
 // GetAll : Retrieves all instances of the model User
 func (service *UserService) GetAll() (models.ServiceResponse, error) {
-	users, err := service.repo.GetAllUser()
+	users, err := service.repo.GetAllUsers()
 
 	if err != nil {
 		return models.ServiceResponse{Value: nil, Err: "Failed to retrieve the users", Status: 500}, err

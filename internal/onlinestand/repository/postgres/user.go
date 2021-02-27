@@ -22,11 +22,38 @@ func NewUserRepository() *UserRepository {
 }
 
 // CreateUser : Persists a new instance of the model User in the database
-func (repo *UserRepository) CreateUser(c models.User) error {
+func (repo *UserRepository) CreateUser(user models.User) (*models.User, error) {
 	panic("Not implemented!")
 }
 
-// GetAllUser : Retrieves all instances of the model User in the database
-func (repo *UserRepository) GetAllUser() ([]*models.User, error) {
+// GetAllUsers : Retrieves all instances of the model User in the database
+func (repo *UserRepository) GetAllUsers() ([]*models.User, error) {
+	panic("Not implemented!")
+}
+
+// GetUserByID : Retrieves an instance of user that matches a given ID
+// or nil in case there is no match
+func (repo *UserRepository) GetUserByID(id string) (*models.User, error) {
+	panic("Not implemented!")
+}
+
+// GetUserByUsername : Retrieves an instance of user that matches a given username
+// or nil in case there is no match
+func (repo *UserRepository) GetUserByUsername(username string) (*models.User, error) {
+	panic("Not implemented!")
+}
+
+// DeleteUserByID : Deletes an instance of user that matches a given ID
+func (repo *UserRepository) DeleteUserByID(id string) error {
+	panic("Not implemented!")
+}
+
+// DeleteUserByUsername : Deletes an instance of user that matches a given username
+func (repo *UserRepository) DeleteUserByUsername(username string) error {
+	panic("Not implemented!")
+}
+
+// Save : Persists an existing instance of the model User in the database
+func (repo *UserRepository) Save(user *models.User) (*models.User, error) {
 	panic("Not implemented!")
 }

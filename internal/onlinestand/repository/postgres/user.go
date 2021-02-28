@@ -22,24 +22,13 @@ func NewUserRepository() *UserRepository {
 }
 
 // CreateUser : Persists a new instance of the model User in the database
-func (repo *UserRepository) CreateUser(user models.User) (int64, error) {
-	stmt, err := repo.db.Prepare(`insert into user (email, username, first_name, last_name, password, status, location_id) values(?);`)
-	if err != nil {
-		return -1, err
-	}
-	defer stmt.Close()
+func (repo *UserRepository) CreateUser(user models.User) (int, error) {
+	var id int
 
-	result, err := stmt.Exec(user.Email, user.Username, user.FirstName, user.LastName, user.Password, user.Status, user.Location.ID)
-	if err != nil {
-		return -1, err
-	}
+	row := repo.db.QueryRow(`insert into user (email, username, first_name, last_name, password, status, location_id) values(?) returning id;`)
+	err := row.Scan(&id)
 
-	id, err := result.LastInsertId()
-	if err != nil {
-		return -1, err
-	}
-
-	return id, nil
+	return id, err
 }
 
 // GetAllUsers : Retrieves all instances of the model User in the database
@@ -61,7 +50,7 @@ func (repo *UserRepository) GetAllUsers() ([]*models.User, error) {
 		}
 	}
 
-	if rows.Err() != nil {
+	if err := rows.Err(); err != nil {
 		return nil, err
 	}
 

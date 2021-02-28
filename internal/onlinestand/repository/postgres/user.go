@@ -25,7 +25,7 @@ func NewUserRepository() *UserRepository {
 func (repo *UserRepository) CreateUser(user models.User) (int, error) {
 	var id int
 
-	row := repo.db.QueryRow(`insert into user (email, username, first_name, last_name, password, status, location_id) values(?) returning id;`)
+	row := repo.db.QueryRow(`insert into stand_user (email, username, first_name, last_name, password, status, location_id) values(?) returning id;`)
 	err := row.Scan(&id)
 
 	return id, err
@@ -33,9 +33,9 @@ func (repo *UserRepository) CreateUser(user models.User) (int, error) {
 
 // GetAllUsers : Retrieves all instances of the model User in the database
 func (repo *UserRepository) GetAllUsers() ([]*models.User, error) {
-	var users []*models.User
+	users := make([]*models.User, 0)
 
-	rows, err := repo.db.Query("select user.id, user.email, user.username, user.first_name, user.last_name, user.status, user.location_id, location.country, location.city from user inner join location on user.location_id = location.id")
+	rows, err := repo.db.Query("select stand_user.id, stand_user.email, stand_user.username, stand_user.first_name, stand_user.last_name, stand_user.status, stand_user.location_id, location.country, location.city from stand_user inner join location on stand_user.location_id = location.id")
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func (repo *UserRepository) GetAllUsers() ([]*models.User, error) {
 // GetUserByID : Retrieves an instance of user that matches a given ID
 // or nil in case there is no match
 func (repo *UserRepository) GetUserByID(id string) (*models.User, error) {
-	row := repo.db.QueryRow("select user.id, user.email, user.username, user.first_name, user.last_name, user.status, user.location_id, location.country, location.city from user inner join location on user.location_id = location.id where user.id=$1", id)
+	row := repo.db.QueryRow("select stand_user.id, stand_user.email, stand_user.username, stand_user.first_name, stand_user.last_name, stand_user.status, stand_user.location_id, location.country, location.city from stand_user inner join location on stand_user.location_id = location.id where stand_user.id=$1", id)
 
 	user := &models.User{}
 	err := row.Scan(user.ID, user.Email, user.Username, user.FirstName, user.LastName, user.Status, user.Location.ID, user.Location.Country, user.Location.City)
@@ -78,7 +78,7 @@ func (repo *UserRepository) GetUserByID(id string) (*models.User, error) {
 // GetUserByUsername : Retrieves an instance of user that matches a given username
 // or nil in case there is no match
 func (repo *UserRepository) GetUserByUsername(username string) (*models.User, error) {
-	row := repo.db.QueryRow("select user.id, user.email, user.username, user.first_name, user.last_name, user.status, user.location_id, location.country, location.city from user inner join location on user.location_id = location.id where user.username=$1", username)
+	row := repo.db.QueryRow("select stand_user.id, stand_user.email, stand_user.username, stand_user.first_name, stand_user.last_name, stand_user.status, stand_user.location_id, location.country, location.city from stand_user inner join location on stand_user.location_id = location.id where stand_user.username=$1", username)
 
 	user := &models.User{}
 	err := row.Scan(user.ID, user.Email, user.Username, user.FirstName, user.LastName, user.Status, user.Location.ID, user.Location.Country, user.Location.City)
@@ -95,7 +95,7 @@ func (repo *UserRepository) GetUserByUsername(username string) (*models.User, er
 
 // DeleteUserByID : Deletes an instance of user that matches a given ID
 func (repo *UserRepository) DeleteUserByID(id string) error {
-	stmt, err := repo.db.Prepare(`delete from user where id=$1;`)
+	stmt, err := repo.db.Prepare(`delete from stand_user where id=$1;`)
 	if err != nil {
 		return err
 	}
@@ -111,7 +111,7 @@ func (repo *UserRepository) DeleteUserByID(id string) error {
 
 // DeleteUserByUsername : Deletes an instance of user that matches a given username
 func (repo *UserRepository) DeleteUserByUsername(username string) error {
-	stmt, err := repo.db.Prepare(`delete from user where username=$1;`)
+	stmt, err := repo.db.Prepare(`delete from stand_user where username=$1;`)
 	if err != nil {
 		return err
 	}
@@ -127,7 +127,7 @@ func (repo *UserRepository) DeleteUserByUsername(username string) error {
 
 // Save : Persists an existing instance of the model User in the database
 func (repo *UserRepository) Save(user *models.User) error {
-	stmt, err := repo.db.Prepare(`update user set username=?, first_name=?, last_name=? where id=?;`)
+	stmt, err := repo.db.Prepare(`update stand_user set username=?, first_name=?, last_name=? where id=?;`)
 	defer stmt.Close()
 	if err != nil {
 		return err

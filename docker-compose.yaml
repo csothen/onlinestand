@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:13.2
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - APP_DB_USER=onlinestand_admin
+      - APP_DB_PASSWORD=admin123
+      - APP_DB_NAME=onlinestand
+    volumes:
+      - postgres-data:/var/lib/postgres/data/
+      - ./internal/database/postgres:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres-data:

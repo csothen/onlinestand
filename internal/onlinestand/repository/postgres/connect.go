@@ -11,9 +11,9 @@ import (
 const (
 	host     = "localhost"
 	port     = 5432
-	user     = "postgres"
-	password = "password"
-	dbname   = "postgres"
+	user     = "root"
+	password = "root"
+	dbname   = "onlinestand"
 )
 
 func connect() (*sql.DB, error) {

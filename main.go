@@ -2,10 +2,13 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -31,24 +34,45 @@ func run(args []string) error {
 		return err
 	}
 
+	db, err := startDatabase()
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+	srv.db = db
+
 	fmt.Printf("Online Stand API listening on :%d\n", *port)
 	return http.ListenAndServe(addr, srv)
 }
 
 type server struct {
 	db     *sql.DB
-	router *http.ServeMux
+	router *mux.Router
 }
 
 func newServer() (*server, error) {
 	srv := &server{
-		router: http.NewServeMux(),
+		router: mux.NewRouter(),
 	}
 
 	srv.routes()
 	return srv, nil
 }
 
-func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.router.ServeHTTP(w, r)
+func (s *server) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
+	s.router.ServeHTTP(rw, r)
+}
+
+func (s *server) respond(rw http.ResponseWriter, r *http.Request, data interface{}, status int) {
+	rw.WriteHeader(status)
+	if data != nil {
+		err := json.NewEncoder(rw).Encode(data)
+		if err != nil {
+			http.Error(rw, err.Error(), http.StatusInternalServerError)
+		}
+	}
+}
+
+func (s *server) decode(rw http.ResponseWriter, r *http.Request, v interface{}) error {
+	return json.NewDecoder(r.Body).Decode(v)
 }

@@ -1,13 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 )
 
 func (s *server) handleAPI() http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, "Welcome to the Online Stand API")
+	return func(rw http.ResponseWriter, r *http.Request) {
+		s.respond(rw, r, "Welcome to the Online Stand API", http.StatusOK)
 	}
 }
